@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Post.css";
-
+import { PostContext } from "../../context/PostContext";
 const Post = (props) => {
 
+    const { setSelectedId } = useContext(PostContext);
   return (
     <div>
-      <button className="post" onClick={() => props.click(props.id)}>
+      <button className="post" onClick={() => {
+        props.click(props.id);
+        // props.select(props.id);
+        setSelectedId(props.id);
+      }}>
         <div>
           <h1>Id: {props.id}</h1>
           <h1>Title: {props.title}</h1>
